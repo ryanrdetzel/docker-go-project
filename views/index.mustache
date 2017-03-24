@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>{{title}}</title>
+<style>
+.error{
+    color:red;
+}
+.success{
+    color:green;
+}
+</style>
+    </head>
+    <body>
+        {{#deleted}} <div class="success">Deleted {{deleted}}</div> {{/deleted}}
+        {{#added}} <div class="success">Added {{added}}</div> {{/added}}
+        {{#err}} <div class="error">Error {{ err }}</div> {{/err}}
+        
+        <form action="/add" method="get">
+            <label>Tag</label>
+            <input type="text" name="tag">
+            <label>Url</label>
+            <input type="text" name="url">
+            <button type="submit">Add Link</button>
+        </form>
+        <hr>
+        <table>
+            {{#links}}
+            <tr>
+                <td><a href="http://go/{{tag}}">{{tag}}</a></td>
+                <td><a href="{{url}}">{{url}}</a></td>
+                <td><a href="/delete/{{tag}}">delete</a></td>
+            </tr>
+            {{/links}}
+        </table>
+    </body>
+</html>

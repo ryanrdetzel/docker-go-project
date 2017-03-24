@@ -1,0 +1,16 @@
+{
+  "name": "go-project",
+  "version": "1.0.0",
+  "description": "Small app that gives you short local readable quick links",
+  "author": "Ryan Detzel <ryandetzel@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "mustache-express": "^1.2.4",
+    "node-json-db": "^0.7.3",
+    "pug": "^2.0.0-beta11"
+  }
+}
