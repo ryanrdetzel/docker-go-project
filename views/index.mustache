@@ -1,38 +1,55 @@
-<!DOCTYPE HTML>
-<html lang="en-us">
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <title>{{title}}</title>
-<style>
-.error{
-    color:red;
-}
-.success{
-    color:green;
-}
-</style>
-    </head>
-    <body>
-        {{#deleted}} <div class="success">Deleted {{deleted}}</div> {{/deleted}}
-        {{#added}} <div class="success">Added {{added}}</div> {{/added}}
-        {{#err}} <div class="error">Error {{ err }}</div> {{/err}}
-        
-        <form action="/add" method="get">
-            <label>Tag</label>
-            <input type="text" name="tag">
-            <label>Url</label>
-            <input type="text" name="url">
-            <button type="submit">Add Link</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>{{title}}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <style>
+        .error{
+            color:red;
+        }
+        .success{
+            color:green;
+        }
+        #url{
+            width: 550px;
+        }
+        body{
+            margin:2% 10%;
+        }
+    </style>
+</head>
+<body>
+    {{#deleted}} <div class="success">Deleted {{deleted}}</div> {{/deleted}}
+    {{#added}} <div class="success">Added {{added}}</div> {{/added}}
+    {{#err}} <div class="error">Error {{ err }}</div> {{/err}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+       <form class="form-inline" action="/add" method="get">
+         <div class="form-group">
+            <input type="text" name="tag" placeholder="tag">
+            <input type="text" name="url" id="url" placeholder="url">
+            <button type="submit" class="btn btn-primary">Add Link</button>
+         </div>
         </form>
-        <hr>
-        <table>
-            {{#links}}
-            <tr>
-                <td><a href="http://go/{{tag}}">{{tag}}</a></td>
-                <td><a href="{{url}}">{{url}}</a></td>
-                <td><a href="/delete/{{tag}}">delete</a></td>
-            </tr>
-            {{/links}}
-        </table>
-    </body>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+        {{#links}}
+        <tr>
+            <td class="col-md-3"><a href="http://go/{{tag}}">{{tag}}</a></td>
+            <td class="col-md-8"><a href="{{url}}">{{url}}</a></td>
+            <td class="col-md-1"><a href="/delete/{{tag}}" class="btn btn-default btn-sm">delete</a></td>
+        </tr>
+        {{/links}}
+    </table> 
+</body>
 </html>
